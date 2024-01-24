@@ -1,0 +1,36 @@
+﻿@page
+@model kütüphane.Pages.CartModel
+@{
+    Layout = "_Layout";
+}
+
+<h2>Shopping Cart</h2>
+
+@if (Model.CartItems != null && Model.CartItems.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Author</td>
+                    <td>$@item.Price</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Your shopping cart is empty.</p>
+}

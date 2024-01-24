@@ -1,0 +1,26 @@
+﻿@page
+@model kütüphane.Pages.AdminControlModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<form method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" asp-for="Username" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" asp-for="Password" required>
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+@if (Model.ShowInvalidLoginMessage)
+{
+    <p style="color:red">Invalid username or password. Please try again.</p>
+}

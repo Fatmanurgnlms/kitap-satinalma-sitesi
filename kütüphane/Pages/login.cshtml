@@ -1,0 +1,94 @@
+﻿@page
+@model kütüphane.Pages.LoginModel
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 350px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 15px;
+            border: 2px solid #4361D8;
+            overflow: hidden;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #4361D8;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 20px;
+            margin: 8px 0;
+            background-color: #4361D8;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #2148a7;
+                opacity: 0.8;
+            }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form method="post">
+            <h2>Login</h2>
+            <div>
+                <label for="ad">Ad:</label>
+                <input type="text" id="ad" name="ad" asp-for="Ad" required>
+            </div>
+            <div>
+                <label for="sifre">Şifre:</label>
+                <input type="password" id="sifre" name="sifre" asp-for="Sifre" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+            <div class="error-message">
+                @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

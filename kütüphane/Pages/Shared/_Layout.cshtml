@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Bookstore</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6pBhRNEb7p1jynlFZxxhMlYUE5I6zBo" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* Navbar stilleri */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FFFFFF;
+            color: #444;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 125px;
+            margin-right: 20px;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-text {
+            text-decoration: none;
+            font-weight: bold;
+            color: #444;
+            transition: background-color 0.3s;
+            font-size: 20px;
+            border: 2px solid #4361D8;
+            border-radius: 15px;
+            padding: 5px 10px;
+        }
+
+            .auth-text:hover {
+                color: #4361D8;
+            }
+
+        /* Bağlantı stilleri */
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .navbar-link {
+            text-decoration: none;
+            color: #444;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-size: 20px;
+        }
+
+            .navbar-link:hover {
+                color: #4361D8;
+            }
+
+        /* Kategori linklerini büyütme */
+        .navbar-links .navbar-link {
+            font-size: 24px;
+        }
+
+        /* Kategori dropdown içerisindeki linkleri büyütme */
+        .dropdown-content a {
+            font-size: 18px;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            border: 2px solid #4361D8;
+            border-radius: 15px;
+            padding: 5px;
+        }
+
+        .search-icon, .cart-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 10px;
+            color: #444;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            margin-left: 5px;
+            width: 0;
+            transition: width 0.4s ease-in-out;
+            overflow: hidden;
+        }
+
+            .search-input.active {
+                width: 300px;
+            }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border: 2px solid #4361D8;
+            border-radius: 15px;
+            min-width: 200px; /* İstediğiniz genişliği ayarlayabilirsiniz */
+            width: max-content; /* İçeriğe göre genişletme */
+            padding: 10px;
+        }
+
+            .dropdown-content a {
+                display: block;
+                text-decoration: none;
+                color: #444;
+                font-size: 16px;
+                padding: 5px 0;
+                transition: background-color 0.3s;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+                .dropdown-content a:hover {
+                    color: #4361D8;
+                    background-color: #f1f1f1;
+                }
+
+        /* İçerik stilleri */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        main {
+            padding-top: 20px;
+        }
+
+        body {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <div class="logo">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/NewFolder/kurduuu.png" height="125px" width="125px" />
+                    </a>
+                </div>
+                <div class="navbar-links">
+                    <a href="/Index" class="navbar-link">Anasayfa</a>
+                    <div class="dropdown">
+                        <a href="#" class="navbar-link">Kategori <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="~/Books/Romans">Roman</a>
+                            <a href="~/Books/Children">Çocuk Kitapları</a>
+                            <a href="~/Books/KisiselGelisim">Kişisel Gelişim</a>
+                            <a href="~/Books/TurkEdebiyati">Türk Edebiyatı</a>
+                        </div>
+                    </div>
+                    <a href="/About" class="navbar-link">Hakkımızda</a>
+                    <a href="/Iletisim" class="navbar-link">İletişim</a>
+                </div>
+            </div>
+            <div class="auth-section">
+                <div class="search-form" id="searchForm">
+                    <i class="fas fa-search search-icon" onclick="showSearch()"></i>
+                    <input type="text" name="searchQuery" class="search-input" placeholder="Search...">
+                </div>
+                <a href="/Login" class="auth-text">Giriş Yap</a>
+                <a href="/Registr" class="auth-text">Kayıt Ol</a>
+                <div class="cart-icon" onclick="navigateToCart()"> <i class="fas fa-shopping-cart"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <script>
+        function showSearch() {
+            var searchInput = document.querySelector(".search-input");
+            searchInput.classList.toggle("active");
+        }
+
+        function navigateToCart() {
+            window.location.href = "/Cart";
+        }
+    </script>
+</body>
+</html>

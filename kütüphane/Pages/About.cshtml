@@ -1,0 +1,118 @@
+﻿@page
+@model kütüphane.Pages.AboutModel
+@{
+    ViewData["Title"] = "Hakkımızda";
+    Layout = "_Layout";
+}
+
+<style>
+    .about-container {
+        text-align: center;
+        margin: 50px auto;
+        max-width: 800px;
+    }
+
+    .oval-box {
+        background-color: #ffffff; /* Oval kutucuk arka plan rengi */
+        border: 2px solid #4361D8; /* Oval kutucuk kenar şeridi rengi */
+        border-radius: 20px; /* Oval kutucuk kenar yuvarlaklığı */
+        padding: 20px; /* Oval kutucuk içerik iç boşluğu */
+        margin-bottom: 20px; /* Oval kutucuklar arası boşluk */
+        transition: transform 0.3s ease-in-out; /* Haraket efekti için geçiş ayarı */
+    }
+
+        .oval-box:hover {
+            transform: scale(1.05); /* Kutucuğa gelindiğinde büyüklük artışı */
+        }
+
+    .about-container h1 {
+        color: #555; /* Koyu gri renk */
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .about-container p {
+        color: #555; /* Koyu gri renk */
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* Diğer stiller */
+
+    footer {
+        background-color: #4d4d4d;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px; /* Boyut */
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .social-media {
+        display: flex;
+        gap: 10px;
+    }
+
+        .social-media a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+</style>
+
+<div class="container about-container">
+    <div class="oval-box">
+        <h1>Hakkımızda</h1>
+        <p>Hoş Geldiniz! Biz, kitap tutkunları ve okuma severler olarak, kitapların gücüne olan inancımızı paylaşan bir ekibiz. Kitaplarla dolu bir dünyada, okuyuculara en iyi deneyimi sunmak ve onları yeni keşiflere yönlendirmek amacıyla bu kitap satış sitesini kurduk.</p>
+    </div>
+
+    <div class="oval-box">
+        <h2>Misyonumuz</h2>
+        <p>Misyonumuz, siz değerli müşterilere geniş bir kitap koleksiyonu sunmak ve her türden okuyucuya hitap eden seçkin eserlere erişim sağlamaktır. Her kitabın, bir dünyaya açılan kapı olduğuna inanıyoruz ve bu kapıları size açmak istiyoruz.</p>
+    </div>
+
+    <div class="oval-box">
+        <h2>Kaliteli Hizmet</h2>
+        <p>Müşteri memnuniyeti bizim için en önemli önceliktir. Sitemizde sunulan kitapları titizlikle seçiyor, güncel ve çeşitli bir koleksiyon oluşturarak her zevke hitap etmeye çalışıyoruz. Hızlı teslimat ve güvenli alışveriş deneyimi ile müşterilerimize en üst düzeyde hizmet sunmayı amaçlıyoruz.</p>
+    </div>
+
+    <div class="oval-box">
+        <h2>Okuma Kültürüne Katkı</h2>
+        <p>Sadece bir kitap satış sitesi olmanın ötesinde, okuma kültürünü yaygınlaştırmak ve kitap dostları arasında bir topluluk oluşturmak da hedeflerimiz arasında. Blog yazıları, öneriler ve etkinliklerle okuma deneyiminizi zenginleştirmeyi amaçlıyoruz.</p>
+    </div>
+
+    <div class="oval-box">
+        <h2>Sizin İçin Buradayız</h2>
+        <p>Soru, öneri veya talepleriniz için her zaman buradayız. Sitemizdeki iletişim bilgilerinden bize ulaşabilir, bize her türlü sorunuzu veya geri bildiriminizi iletebilirsiniz. Sizler için daha iyi bir hizmet sunabilmek adına her zaman dinlemeye hazırız.</p>
+
+        <p>Teşekkür ederiz ki bizi tercih ettiğiniz için. Birlikte daha nice kitaplar keşfetmek için sabırsızlanıyoruz!</p>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>İletişim Bilgileri</h3>
+                <p>Postane, Eflatun Sk. No:8, 34940 Tuzla/İstanbul</p>
+                <p>Email: kitapkurdu@hotmail.com</p>
+                <p>Telefon: 0212 202 3636 </p>
+            </div>
+            <div class="social-media">
+                <h3>Sosyal Medya</h3>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p> 2024 Kitap Kurdu. Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+</footer>

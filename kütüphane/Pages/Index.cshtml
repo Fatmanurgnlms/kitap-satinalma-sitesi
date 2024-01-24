@@ -1,0 +1,322 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "_Layout"; // Layout'u belirtiyoruz
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - My Bookstore</title>
+    <!-- CSS ve diğer meta etiketleri buraya yerleştirilebilir -->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> <!-- Font Awesome stil dosyası -->
+
+    <style>
+        /* Diğer stiller */
+
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+            .mySlides img {
+                max-width: 100%;
+                height: auto;
+            }
+
+        .center-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .book-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .book {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px;
+            border: 1px solid #ecf0f1;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 200px; /* Sabit genişlik */
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .book:hover {
+                transform: scale(1.1);
+            }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .book-title {
+            font-size: 18px; /* Başlık font boyutu düşürüldü */
+            color: #2c3e50;
+            margin: 15px 0;
+        }
+
+        .book-author {
+            font-size: 14px; /* Yazar font boyutu düşürüldü */
+            color: #7f8c8d;
+        }
+
+        .book-price {
+            font-size: 16px; /* Fiyat font boyutu düşürüldü */
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .add-to-cart-btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px; /* Düğme font boyutu düşürüldü */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .add-to-cart-btn:hover {
+                background-color: #2980b9;
+            }
+
+        .highlighted-books {
+            text-align: center;
+            margin: 20px;
+        }
+
+            .highlighted-books h2 {
+                color: #2c3e50;
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .highlighted-books .book-container {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .highlighted-books .book {
+                display: inline-block;
+                margin: 15px;
+                padding: 15px;
+                border: 1px solid #ecf0f1;
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+                width: 200px; /* Sabit genişlik */
+                transition: transform 0.3s ease-in-out;
+            }
+
+                .highlighted-books .book:hover {
+                    transform: scale(1.1);
+                }
+
+            .highlighted-books img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+            .highlighted-books .book-title {
+                font-size: 18px; /* Başlık font boyutu düşürüldü */
+                color: #2c3e50;
+                margin: 15px 0;
+            }
+
+            .highlighted-books .book-author {
+                font-size: 14px; /* Yazar font boyutu düşürüldü */
+                color: #7f8c8d;
+            }
+
+            .highlighted-books .book-price {
+                font-size: 16px; /* Fiyat font boyutu düşürüldü */
+                color: #e74c3c;
+                margin-top: 10px;
+            }
+
+            .highlighted-books .add-to-cart-btn {
+                background-color: #3498db;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px; /* Düğme font boyutu düşürüldü */
+                transition: background-color 0.3s ease-in-out;
+            }
+
+                .highlighted-books .add-to-cart-btn:hover {
+                    background-color: #2980b9;
+                }
+
+        /* Diğer stiller */
+
+        footer {
+            background-color: #4d4d4d;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px; /* Boyut */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 10px;
+        }
+
+            .social-media a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main role="main">
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="~/NewFolder/res4.png" alt="resim bilgilendirme" class="center-image" />
+                    <img src="~/NewFolder/res1.png" alt="resim bilgilendirme" class="center-image" />
+                    <img src="~/NewFolder/res2.png" alt="resim bilgilendirme" class="center-image" />
+                </div>
+            </div>
+
+            <h2 style="text-align: center;">İlginizi Çekebilecek Kitaplar</h2>
+
+            <div class="book-container">
+                @foreach (var book in Model.RecommendedBooks)
+                {
+                    <div class="book">
+                        <img src="~/NewFolder/@book.ImageFileName" alt="resim bilgilendirme" class="center-image" />
+                        <p class="book-title">@book.Title</p>
+                        <p class="book-author">@book.Author</p>
+                        <p class="book-price">$@book.Price</p>
+                        <button class="add-to-cart-btn" onclick="addToCart('@book.Id')">Sepete Ekle</button>
+                    </div>
+                }
+            </div>
+
+            <div class="highlighted-books">
+                <h2>Öne Çıkan Kitaplar</h2>
+
+                <div class="book-container">
+                    @foreach (var highlightedBook in Model.HighlightedBooks)
+                    {
+                        <div class="book">
+                            <img src="~/NewFolder/@highlightedBook.ImageFileName" alt="resim bilgilendirme" class="center-image" />
+                            <p class="book-title">@highlightedBook.Title</p>
+                            <p class="book-author">@highlightedBook.Author</p>
+                            <p class="book-price">$@highlightedBook.Price</p>
+                            <button class="add-to-cart-btn" onclick="addToCart('@highlightedBook.Id')">Sepete Ekle</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="weekly-deals">
+        <h2 style="text-align: center;">Haftanın Fırsatları</h2>
+
+        <div class="book-container">
+            @foreach (var weeklyDeal in Model.WeeklyDeals)
+            {
+                <div class="book">
+                    <img src="~/NewFolder/@weeklyDeal.ImageFileName" alt="resim bilgilendirme" class="center-image" />
+                    <p class="book-title">@weeklyDeal.Title</p>
+                    <p class="book-author">@weeklyDeal.Author</p>
+                    <p class="book-price">$@weeklyDeal.Price</p>
+                    <button class="add-to-cart-btn" onclick="addToCart('@weeklyDeal.Id')">Sepete Ekle</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- JavaScript dosyaları ve diğer script etiketleri buraya eklenebilir -->
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var slides = document.querySelector('.mySlides');
+            var slideWidth = slides.clientWidth;
+            var images = slides.getElementsByTagName('img');
+            var totalWidth = slideWidth * images.length;
+            slides.style.width = totalWidth + 'px';
+
+            setInterval(function () {
+                slideIndex++;
+                if (slideIndex === images.length) {
+                    slideIndex = 0;
+                }
+                var offset = -slideIndex * slideWidth;
+                slides.style.transform = 'translateX(' + offset + 'px)';
+            }, 4000); // Her 4 saniyede bir slaytı değiştir
+        }
+
+        // Sepete Ekle fonksiyonu
+        function addToCart(bookId) {
+            // Sepete ekleme işlemlerini gerçekleştirin, örneğin Session kullanabilirsiniz.
+            // Bu örnekte basit bir örnek olarak TempData kullanılmıştır.
+            alert('Sepete eklenen kitap ID: ' + bookId);
+        }
+    </script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>Postane, Eflatun Sk. No:8, 34940 Tuzla/İstanbul</p>
+                    <p>Email: kitapkurdu@hotmail.com</p>
+                    <p>Telefon: 0212 202 3636 </p>
+                </div>
+                <div class="social-media">
+                    <h3>Sosyal Medya</h3>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p> 2024 Kitap Kurdu. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

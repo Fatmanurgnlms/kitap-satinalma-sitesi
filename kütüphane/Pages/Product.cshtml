@@ -1,0 +1,148 @@
+﻿
+@page
+@model kütüphane.Pages.ProductModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <nav class="sidebar">
+        <a href="#" class="nav-item">Ürün Ekle</a>
+        <a href="/AdminRoles" class="nav-item">Kullanıcı Bilgileri</a>
+    </nav>
+
+    <div class="content">
+        <h1>Add Product</h1>
+
+        <form method="post">
+            <div>
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" name="Title" asp-for="Title" required>
+            </div>
+            <div>
+                <label for="Id">Product Id:</label>
+                <input type="text" id="Id" name="Id" asp-for="Id" required>
+            </div>
+            <div>
+                <label for="Author">Author:</label>
+                <input type="text" id="Author" name="Author" asp-for="Author" required>
+            </div>
+            <div>
+                <label for="Price">Product Price:</label>
+                <input type="number" id="Price" name="Price" asp-for="Price" required>
+            </div>
+            <div>
+                <label for="Category">Category:</label>
+                <select id="Category" name="Category" asp-for="Category" required>
+                    <option value="">Select a category</option>
+                    <option value="Horror">Roman</option>
+                    <option value="Horror">Çocuk Kitapları</option>
+                    <option value="Literature">Kişisel Gelişim</option>
+                    <option value="Literature">Türk Edebiyatı</option>
+                </select>
+
+                
+            </div>
+            <div>
+                <button type="submit">Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Diğer stiller buraya eklenir */
+
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border-radius: 5px; /* Dropdown'u oval yap */
+        border: 1px solid #4361D8; /* Kenar çizgilerini #4361D8 mavi yap */
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .sidebar {
+        background-color: #FFFF;
+        padding: 20px;
+        width: 200px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        border-radius: 15px; /* Kenarları oval yap */
+        border: 2px solid #4361D8; /* Kenar çizgileri #4361D8 mavi yap */
+    }
+
+    .nav-item {
+        text-decoration: none;
+        color: #4361D8; /* Kenar çizgisi rengi */
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #4361D8; /* Kenar çizgileri #4361D8 mavi yap */
+        border-radius: 5px;
+    }
+
+        .nav-item:hover {
+            background-color: #4361D8;
+            color: white; /* Hover olduğunda yazı rengini beyaz yap */
+        }
+
+    .content {
+        padding: 20px;
+        flex-grow: 1;
+        background-color: white;
+        color: #333;
+        border-radius: 15px; /* Kenarları oval yap */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-left: 20px; /* İstenen uzaklıkta ayarlayabilirsiniz */
+        border: 2px solid #4361D8; /* Kenar çizgileri #4361D8 mavi yap */
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input[type="text"],
+    textarea,
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border-radius: 5px; /* Giriş kutularını oval yap */
+        border: 1px solid #4361D8; /* Kenar çizgilerini #4361D8 mavi yap */
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    button {
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 10px; /* Kenarları daha belirgin yapmak için 10px radius kullanabilirsiniz */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        padding: 15px 20px; /* Padding değerini artırarak boyutu büyütün */
+        font-size: 18px; /* Yazı boyutunu belirginleştirmek için 18px kullanabilirsiniz */
+        margin: 0 auto; /* Bu satır ile button'ı yatayda ortala */
+        text-align: center;
+    }
+
+        button:hover {
+            background-color: #555;
+        }
+</style>
